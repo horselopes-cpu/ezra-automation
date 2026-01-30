@@ -1,0 +1,15 @@
+{
+  "name": "ezra-automation",
+  "version": "1.0.0",
+  "description": "Ezra Booking Automation Suite",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^25.1.0",
+    "dotenv": "^16.0.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "test": "npx playwright test",
+    "report": "npx playwright show-report"
+  }
+}
