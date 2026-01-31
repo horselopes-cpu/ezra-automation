@@ -11,7 +11,7 @@ test.describe('Ezra Core Booking & Security Suite', () => {
 
     /**
      * TC-01: E2E Happy Path (Revenue Path)
-     * Validates the core business flow from details to successful payment[cite: 1043].
+     * Validates the core business flow from details to successful payment
      */
     test('TC-01: Full flow from questionnaire to payment success', async ({ page }) => {
         await bookingPage.fillMemberData('MEMBER_123');
@@ -27,20 +27,20 @@ test.describe('Ezra Core Booking & Security Suite', () => {
 
     /**
      * TC-02: Security/Privacy (IDOR Prevention)
-     * Requirement: Prevent members from accessing others' data[cite: 802, 1048].
+     * Requirement: Prevent members from accessing others' data
      */
     test('TC-02: Backend must reject unauthorized memberId access', async ({ request }) => {
         const response = await request.post('/api/medical-questionnaire/begin', {
             data: { memberId: 'TARGET_OTHER_USER' },
             headers: { 'Authorization': `Bearer ${process.env.VALID_TOKEN}` }
         });
-        // Asserting 403 Forbidden ensures the server enforces privacy[cite: 786, 804].
+        // Asserting 403 Forbidden ensures the server enforces privacy
         expect(response.status()).toBe(403);
     });
 
     /**
      * TC-03: Data Integrity (Webhook Confirmation)
-     * Verifies the database actually updates after the Stripe webhook[cite: 1053].
+     * Verifies the database actually updates after the Stripe webhook
      */
     test('TC-03: Verify database state after successful webhook sync', async ({ request }) => {
         const response = await request.get('/api/internal/booking-status/MEMBER_123');
