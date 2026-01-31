@@ -8,7 +8,7 @@ export class BookingPage {
     constructor(page: Page) {
         this.page = page;
         this.nextBtn = page.locator('button:has-text("Next")');
-        // Targeted iframe for Stripe security elements [cite: 42, 801]
+        // Targeted iframe for Stripe security elements
         this.stripeFrame = page.frameLocator('iframe[name^="__privateStripeFrame"]');
     }
 
