@@ -1,3 +1,4 @@
+// Import Playwright testing tools
 import { test, expect } from '@playwright/test';
 
 /**
