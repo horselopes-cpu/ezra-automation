@@ -23,7 +23,9 @@ test.describe('Ezra Core Booking & Security Suite', () => {
         await bookingPage.fillPaymentDetails('4242424242424242', '12/26', '123');
         await page.click('#submit-payment');
 
+        // Asserting "Confirmation" URL
         await expect(page).toHaveURL(/.*confirmation/);
+        // Asserting "Success" text populated in the page
         await expect(page.locator('text=Success')).toBeVisible();
     });
 
@@ -36,7 +38,7 @@ test.describe('Ezra Core Booking & Security Suite', () => {
             data: { memberId: 'TARGET_OTHER_USER' },
             headers: { 'Authorization': `Bearer ${process.env.VALID_TOKEN}` }
         });
-        // Asserting 403 Forbidden ensures the server enforces privacy
+        // Asserting 403 Forbidden response code to ensure the server is able to enforce privacy
         expect(response.status()).toBe(403);
     });
 
@@ -47,7 +49,10 @@ test.describe('Ezra Core Booking & Security Suite', () => {
     test('TC-03: Verify database state after successful webhook sync', async ({ request }) => {
         const response = await request.get('/api/internal/booking-status/MEMBER_123');
         const data = await response.json();
+
+        // Asserting the booking status is "Paid"
         expect(data.isPaid).toBe(true);
+        // Asserting the booking status is "Confirmed"
         expect(data.status).toBe('confirmed');
     });
 });
