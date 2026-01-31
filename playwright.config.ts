@@ -9,7 +9,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30000,
   use: {
-    // Scalability: baseURL allows switching between staging/prod easily [cite: 355]
+    // Scalability: baseURL allows switching between staging/prod easily
     baseURL: 'https://staging-hub.ezra.com/sign-in/',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
