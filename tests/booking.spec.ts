@@ -1,6 +1,8 @@
+// Import Playwright testing tools and the "BookingPage" class
 import { test, expect } from '@playwright/test';
 import { BookingPage } from '../pages/BookingPage';
 
+// Grouping the tests
 test.describe('Ezra Core Booking & Security Suite', () => {
     let bookingPage: BookingPage;
 
